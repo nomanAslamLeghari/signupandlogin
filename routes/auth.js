@@ -5,7 +5,7 @@ const {registerValidate, loginValidate} = require('../validation');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
-const cycleJSON = require('json-cycle');
+require('dotenv').config();
 
 router.post('/register',async (req, res)=>{
     const {error} = registerValidate(req.body);
@@ -39,8 +39,9 @@ router.post('/register',async (req, res)=>{
                 if (err) { return res.status(500).send({ msg: err.message }); }
      
                 // Send the email
-                var transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: 'nomanaslamleghari@gmail.com', pass: 'brocoding1' } });
-                var mailOptions = { from: 'nomanaslamleghari@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+                //put email and password in the .env file
+                var transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: "", pass: "" } });//add emails, and passwords from keys or env
+                var mailOptions = { from: "", to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
                 transporter.sendMail(mailOptions, function (err) {
                     if (err) { return res.status(500).send({ msg: err.message }); }
                     res.status(200).send('A verification email has been sent to ' + user.email + '.');
@@ -55,7 +56,7 @@ router.post('/register',async (req, res)=>{
 
 
 
-/*router.post('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     const {error} = loginValidate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     const user = await User.findOne({email:req.body.email});
@@ -63,11 +64,10 @@ router.post('/register',async (req, res)=>{
     const validPass = await bcrypt.compare(req.body.password,user.password);
     if(!validPass || !user) return res.status(400).send('Invalid Email or Password');
 
-    const token = jwt.sign({_id: user._id}, require('../config/keys').tokenSecret);
-    res.header('auth-token',token).send(token);
+    res.send("logged In");
 
 
-});*/
+});
 
 
 

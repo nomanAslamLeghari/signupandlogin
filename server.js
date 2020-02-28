@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 
 //body parser
@@ -9,10 +10,9 @@ app.use(express.json());
 const authRoute = require('./routes/auth');
 const confRoute = require('./routes/confirmationPost');
 
-//connect db
-const db = require('./config/keys').mongoURI;
 
-mongoose.connect(db, { useNewUrlParser: true,useUnifiedTopology: true })
+
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true,useUnifiedTopology: true })
 .then(() => console.log('MongoDB Connected...'))
 .catch(err => console.log(err));
 
