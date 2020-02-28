@@ -1,0 +1,39 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "registration module",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomanAslamLeghari/nodeJS.git"
+  },
+  "keywords": [
+    "registration",
+    "module"
+  ],
+  "author": "Noman Aslam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nomanAslamLeghari/nodeJS/issues"
+  },
+  "homepage": "https://github.com/nomanAslamLeghari/nodeJS#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.0",
+    "bcrypt": "^4.0.0",
+    "circular-json": "^0.5.9",
+    "crypto": "^1.0.1",
+    "cyclejs": "^0.26.0",
+    "express": "^4.17.1",
+    "json-cycle": "^1.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.2",
+    "mongoose-encryption": "^2.0.2",
+    "nodemailer": "^6.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
