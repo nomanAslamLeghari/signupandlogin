@@ -22,7 +22,7 @@
   "homepage": "https://github.com/nomanAslamLeghari/nodeJS#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.0",
-    "bcrypt": "^4.0.0",
+    "bcrypt": "^5.0.0",
     "circular-json": "^0.5.9",
     "crypto": "^1.0.1",
     "cyclejs": "^0.26.0",
